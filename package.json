@@ -1,0 +1,19 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A simple learning project, from which we can build and learn more advanced topics.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeborough/blog.git"
+  },
+  "author": "Andy Freeborough <andy@freeborough.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freeborough/blog/issues"
+  },
+  "homepage": "https://github.com/freeborough/blog#readme"
+}
