@@ -1,15 +1,22 @@
-const posts = [];
+import pg from "pg";
+
+const db = new pg.Pool();
 
 export default class Post {
-  static create(post) {
-    posts.push(post);
+  static async create(post) {
+    const sql = "INSERT INTO post (title, body) VALUES ($1, $2);";
+    const result = await db.query(sql, [ post.title, post.body ]);
   }
 
-  static getAll() {
-    return posts;
+  static async getAll() {
+    const sql = "SELECT * FROM post;";
+    const result = await db.query(sql);
+    return result.rows;
   }
 
-  static getById(id) {
-    return posts.find(post => post.id == id);
+  static async getById(id) {
+    const sql = "SELECT * FROM post WHERE id = $1";
+    const result = await db.query(sql, [ id ]);
+    return result.rows[0];
   }
 }
