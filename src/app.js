@@ -17,13 +17,28 @@ app.get("/api/post/:id", async (req, res) => {
 });
 
 app.post("/api/post/", async (req, res) => {
-  console.log(`Post received: ${JSON.stringify(req.body)}`);
   const post = {
     title: req.body.title,
     body: req.body.body,
   };
 
   await Post.create(post);
+  res.sendStatus(200);
+});
+
+app.put("/api/post/:id", async (req, res) => {
+  const post = {
+    id: req.params.id,
+    title: req.body.title,
+    body: req.body.body,
+  };
+
+  await Post.update(post);
+  res.sendStatus(200);
+});
+
+app.delete("/api/post/:id", async (req, res) => {
+  await Post.delete(req.params.id);
   res.sendStatus(200);
 });
 

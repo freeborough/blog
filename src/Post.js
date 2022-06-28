@@ -15,8 +15,18 @@ export default class Post {
   }
 
   static async getById(id) {
-    const sql = "SELECT * FROM post WHERE id = $1";
+    const sql = "SELECT * FROM post WHERE id = $1;";
     const result = await db.query(sql, [ id ]);
     return result.rows[0];
+  }
+
+  static async update(post) {
+    const sql = "UPDATE post SET (title = $1, body = $2) WHERE id = $3;";
+    const result = await db.query(sql, [ post.title, post.body, post.id ]);
+  }
+
+  static async delete(id) {
+    const sql = "DELETE FROM post WHERE id = $1;";
+    const result = await db.query(sql, [ id ]);
   }
 }
