@@ -23,7 +23,7 @@ app.post("/api/post/", async (req, res) => {
   };
 
   await Post.create(post);
-  res.sendStatus(200);
+  res.sendStatus(204);
 });
 
 app.put("/api/post/:id", async (req, res) => {
@@ -34,12 +34,12 @@ app.put("/api/post/:id", async (req, res) => {
   };
 
   await Post.update(post);
-  res.sendStatus(200);
+  res.sendStatus(204);
 });
 
 app.delete("/api/post/:id", async (req, res) => {
   await Post.delete(req.params.id);
-  res.sendStatus(200);
+  res.sendStatus(204);
 });
 
 app.listen(port, () => {
