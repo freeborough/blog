@@ -2,12 +2,14 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "A simple learning project, from which we can build and learn more advanced topics.",
-  "main": "src/app.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "mocha --exit",
+    "coverage": "c8 --all --src ./src npm run test",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,11 @@
     "pg": "^8.7.3"
   },
   "devDependencies": {
+    "c8": "^7.11.3",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "husky": "^8.0.1",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.16"
   }
 }

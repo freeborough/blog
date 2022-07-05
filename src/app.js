@@ -1,11 +1,8 @@
-import "dotenv/config";
 import express from "express";
 import Post from "./Post.js";
 
-const port = process.env.APP_PORT || 3000;
-const appName = process.env.APP_NAME || "Blog Server";
-
 const app = express();
+export default app;
 app.use(express.json());
 
 app.get("/api/post/", async (req, res) => {
@@ -40,8 +37,4 @@ app.put("/api/post/:id", async (req, res) => {
 app.delete("/api/post/:id", async (req, res) => {
   await Post.delete(req.params.id);
   res.sendStatus(204);
-});
-
-app.listen(port, () => {
-  console.log(`${appName} is listening on port ${port}`);
 });
