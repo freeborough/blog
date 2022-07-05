@@ -5,6 +5,11 @@ const app = express();
 export default app;
 app.use(express.json());
 
+app.all("*", (req, res, next) => {
+  console.log(`${req.method} ${req.url} ${JSON.stringify(req.body)} `);
+  next();
+});
+
 app.get("/api/post/", async (req, res) => {
   res.json(await Post.getAll());
 });
@@ -38,3 +43,5 @@ app.delete("/api/post/:id", async (req, res) => {
   await Post.delete(req.params.id);
   res.sendStatus(204);
 });
+
+
