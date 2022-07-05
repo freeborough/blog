@@ -1,6 +1,4 @@
-import pg from "pg";
-
-const db = new pg.Pool();
+import db from "./db.js";
 
 export default class Post {
   static async create(post) {
