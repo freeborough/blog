@@ -1,13 +1,9 @@
 # Next Steps
 
-## Testing & Documentation
+## Public Site
 
-* Mocha and Chai
-* Chai Http
-* Integration and Unit Tests
-* Code coverage with C8
-* Documentation with JSDoc
-* Git hooks with Husky
+* Old school page generation with templates
+* Search engine optimisation (slugs, meta)
 
 ## Routing & Building Admin UI
 
@@ -17,11 +13,6 @@
 * CORS
 * API Client
 * Non-reactive HTML UI
-
-## Public Site
-
-* Old school page generation with templates
-* Search engine optimisation (slugs, meta)
 
 ## Authentication & Authorisation
 

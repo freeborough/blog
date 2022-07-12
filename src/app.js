@@ -1,13 +1,22 @@
+import fs from "fs";
 import express from "express";
+import Handlebars from "handlebars";
 import Post from "./Post.js";
 
 const app = express();
 export default app;
 app.use(express.json());
 
-app.all("*", (req, res, next) => {
-  console.log(`${req.method} ${req.url} ${JSON.stringify(req.body)} `);
-  next();
+app.get("/", async (req, res) => {
+  const posts = await Post.getAll();
+  const template = Handlebars.compile(fs.readFileSync("./src/templates/index.hbs", "utf8"));
+  res.status(200).send(template({ posts, APP_NAME: process.env.APP_NAME }));
+});
+
+app.get("/:id", async (req, res) => {
+  const post = await Post.getById(req.params.id);
+  const template = Handlebars.compile(fs.readFileSync("./src/templates/post.hbs", "utf8"));
+  res.status(200).send(template({ post, APP_NAME: process.env.APP_NAME }));
 });
 
 app.get("/api/post/", async (req, res) => {

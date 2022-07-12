@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>{{APP_NAME}}</title>
+  </head>
+  <body>
+    <h1>{{APP_NAME}}</h1>
+    <ul>
+      {{#each posts}}
+        <li>
+          <a href="/{{this.id}}">{{this.title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </body>
+</html>
