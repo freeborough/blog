@@ -10,6 +10,11 @@ export default app;
 app.use(express.json());
 app.use("/api/post", PostAPIRouter);
 
+app.all("*", (req, res, next) => {
+  log.info(JSON.stringify({ method: req.method, path: req.path, params: req.params, body: req.body }));
+  next();
+});
+
 app.get("/", async (req, res) => {
   log.info("GET /");
   const posts = await Post.getAll();
