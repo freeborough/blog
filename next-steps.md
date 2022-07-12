@@ -2,8 +2,8 @@
 
 ## Public Site
 
-* Old school page generation with templates
-* Search engine optimisation (slugs, meta)
+* Make pretty with CSS
+* Basics of SEO (meta tags, pagespeed, accessibility)
 
 ## Routing & Building Admin UI
 
