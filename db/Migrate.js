@@ -14,8 +14,8 @@ export default class Migrate {
   }
 
   static async seeds() {
-    await Post.create({title: "Test One", body: "This is a test post."});
-    await Post.create({title: "Another Test", body: "This is the dreaded follow-up post."});
+    await Post.create({title: "Test One", slug: "test-one", body: "This is a test post."});
+    await Post.create({title: "Another Test", slug: "another-test", body: "This is the dreaded follow-up post."});
   }
 
   static async doAll() {

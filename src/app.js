@@ -13,8 +13,8 @@ app.get("/", async (req, res) => {
   res.status(200).send(template({ posts, APP_NAME: process.env.APP_NAME }));
 });
 
-app.get("/:id", async (req, res) => {
-  const post = await Post.getById(req.params.id);
+app.get("/:slug", async (req, res) => {
+  const post = await Post.getBySlug(req.params.slug);
   const template = Handlebars.compile(fs.readFileSync("./src/templates/post.hbs", "utf8"));
   res.status(200).send(template({ post, APP_NAME: process.env.APP_NAME }));
 });
@@ -31,6 +31,7 @@ app.post("/api/post/", async (req, res) => {
   const post = {
     title: req.body.title,
     body: req.body.body,
+    slug: req.body.slug,
   };
 
   await Post.create(post);
@@ -42,6 +43,7 @@ app.put("/api/post/:id", async (req, res) => {
     id: req.params.id,
     title: req.body.title,
     body: req.body.body,
+    slug: req.body.slug,
   };
 
   await Post.update(post);

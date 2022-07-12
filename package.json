@@ -9,7 +9,8 @@
     "dev": "nodemon src/server.js",
     "test": "mocha --exit",
     "coverage": "c8 --all --src ./src npm run test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "migrate": "node db/rebuild.js"
   },
   "repository": {
     "type": "git",

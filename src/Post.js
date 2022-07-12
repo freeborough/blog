@@ -2,8 +2,8 @@ import db from "./db.js";
 
 export default class Post {
   static async create(post) {
-    const sql = "INSERT INTO post (title, body) VALUES ($1, $2);";
-    const result = await db.query(sql, [ post.title, post.body ]);
+    const sql = "INSERT INTO post (title, body, slug) VALUES ($1, $2, $3);";
+    const result = await db.query(sql, [ post.title, post.body, post.slug ]);
   }
 
   static async getAll() {
@@ -18,9 +18,15 @@ export default class Post {
     return result.rows[0];
   }
 
+  static async getBySlug(slug) {
+    const sql = "SELECT * FROM post WHERE slug = $1;";
+    const result = await db.query(sql, [ slug ]);
+    return result.rows[0];
+  }
+
   static async update(post) {
-    const sql = "UPDATE post SET title = $1, body = $2 WHERE id = $3;";
-    const result = await db.query(sql, [ post.title, post.body, post.id ]);
+    const sql = "UPDATE post SET title = $1, body = $2, slug = $3 WHERE id = $4;";
+    const result = await db.query(sql, [ post.title, post.body, post.slug, post.id ]);
   }
 
   static async delete(id) {
