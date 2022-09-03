@@ -2,14 +2,13 @@
 
 ## Public Site
 
+* express.static
 * Make pretty with CSS
+* Show flexibility of CSS by having themes?  (env variable to switch?)
 * Basics of SEO (meta tags, pagespeed, accessibility)
 
 ## Routing & Building Admin UI
 
-* Express Routers
-* Refactor API into a PostRouter
-* express.static
 * CORS
 * API Client
 * Non-reactive HTML UI
@@ -17,8 +16,9 @@
 ## Authentication & Authorisation
 
 * User entity
-* Bcrypt
+* Bcrypt (js)
 * Session (cookies) vs JWT
+  * Make our own session store?
 * Simple express middleware?
   * express-basic-auth?
 
@@ -35,9 +35,31 @@
   * SSH key authentication
   * Firewall
   * fail2ban
-* ansible installation script
 * NGINX
   * Reverse proxy
 * DNS
 * CertBot
 * scp/rsync
+
+## Automating Deployment
+
+* Ansible
+* Docker (docker compose)?
+* Terraform?
+
+## Blog Advancement
+
+* Dates
+* Pagination
+* Search
+* Rich text (markdown) and sanitization.
+* Tags
+* Comments
+* RSS/Atom
+* Images
+* Multi-user
+* Author
+* Multi-site (domain mapping)
+* Mailing list
+* Micro-services (blog, auth)
+* ?
