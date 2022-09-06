@@ -47,6 +47,11 @@
 * Docker (docker compose)?
 * Terraform?
 
+## Performance
+
+* Pre-loading/compiling/caching templates.
+* Caching output.
+
 ## Blog Advancement
 
 * Dates
