@@ -2,10 +2,10 @@
 
 ## Public Site
 
-* express.static
 * Make pretty with CSS
+* express.static
 * Show flexibility of CSS by having themes?  (env variable to switch?)
-* Basics of SEO (meta tags, pagespeed, accessibility)
+* Basics of SEO (meta tags, pagespeed, accessibility)?
 
 ## Routing & Building Admin UI
 
