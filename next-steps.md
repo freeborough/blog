@@ -52,14 +52,20 @@
 * Dates
 * Pagination
 * Search
+  * Basic (like)
+  * Full text
+  * Dynamic results
 * Rich text (markdown) and sanitization.
 * Tags
 * Comments
 * RSS/Atom
 * Images
+  * Image server?
+  * Image generation (media queries)?
 * Multi-user
 * Author
 * Multi-site (domain mapping)
 * Mailing list
+* Reactive admin interface (Svelte)
 * Micro-services (blog, auth)
 * ?
