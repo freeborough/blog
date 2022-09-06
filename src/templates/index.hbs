@@ -1,15 +1,28 @@
 <html>
   <head>
     <title>{{APP_NAME}}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/default.css" />
   </head>
   <body>
-    <h1>{{APP_NAME}}</h1>
-    <ul>
-      {{#each posts}}
-        <li>
-          <a href="/{{this.slug}}">{{this.title}}</a>
-        </li>
-      {{/each}}
-    </ul>
+
+    <div class="splash-wrapper">
+      <section class="splash">
+        <h1>{{APP_NAME}}</h1>
+      </section>
+    </div>
+
+    <div class="section-wrapper">
+      <section>
+        <ul class="post-list">
+          {{#each posts}}
+            <li class="post-list-item">
+              <a href="/{{this.slug}}">{{this.title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    </div>
+
   </body>
 </html>

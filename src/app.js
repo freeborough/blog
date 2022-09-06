@@ -9,6 +9,7 @@ const app = express();
 export default app;
 app.use(express.json());
 app.use("/api/post", PostAPIRouter);
+app.use(express.static("public"));
 
 app.all("*", (req, res, next) => {
   log.info(JSON.stringify({ method: req.method, path: req.path, params: req.params, body: req.body }));
@@ -28,5 +29,3 @@ app.get("/:slug", async (req, res) => {
   const template = Handlebars.compile(fs.readFileSync("./src/templates/post.hbs", "utf8"));
   res.status(200).send(template({ post, APP_NAME: process.env.APP_NAME }));
 });
-
-
