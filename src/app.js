@@ -20,7 +20,7 @@ app.get("/", async (req, res) => {
   log.info("GET /");
   const posts = await Post.getAll();
   const template = Handlebars.compile(fs.readFileSync("./src/templates/index.hbs", "utf8"));
-  res.status(200).send(template({ posts, APP_NAME: process.env.APP_NAME }));
+  res.status(200).send(template({ posts, APP_NAME: process.env.APP_NAME, APP_SUBTITLE: process.env.APP_SUBTITLE }));
 });
 
 app.get("/:slug", async (req, res) => {

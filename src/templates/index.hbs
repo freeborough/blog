@@ -8,16 +8,25 @@
 
     <div class="splash-wrapper">
       <section class="splash">
-        <h1>{{APP_NAME}}</h1>
+        <h1 class="title">{{APP_NAME}}</h1>
+        <h2 class="subtitle">{{APP_SUBTITLE}}</h2>
       </section>
     </div>
 
     <div class="section-wrapper">
-      <section>
+      <section class="post-section">
         <ul class="post-list">
           {{#each posts}}
             <li class="post-list-item">
-              <a href="/{{this.slug}}">{{this.title}}</a>
+              <div class="post-title">{{this.title}}</div>
+              <div class="post-body">
+                <script>
+                  document.write('{{this.body}}'.substring(0, 150));
+                </script>
+              </div>
+              <div class="post-actions">
+                <button class="read-more" onclick="document.location.href='/{{this.slug}}';">Read More</button>
+              </div>
             </li>
           {{/each}}
         </ul>
