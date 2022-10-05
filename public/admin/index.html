@@ -66,7 +66,13 @@
       el.innerHTML = output;
     }
 
-    async function deletePost(id) {
+    function deletePost(id) {
+      // Delete the post on the server.
+      // NOTE: We are NOT using await, we're letting the execution of the
+      // asynchronous method happen in the background while we carry on
+      // executing the code.
+      postClient.delete(id);
+
       // Remove the post from our store.
       const index = store.posts.findIndex(post => post.id == id);
       store.posts.splice(index, 1);
@@ -74,9 +80,22 @@
       // Remove the post's row from the UI.
       const el = document.getElementById(`post-${id}`);
       el.remove();
+    }
 
-      // Delete the post on the server.
-      await postClient.delete(id);
+    function filterPosts(filter) {
+      for (let post of store.posts) {
+        let display = "table-row";
+
+        // If the post title does NOT (!) include the filter, set the display to 'none'.
+        if (!post.title.toLowerCase().includes(filter.toLowerCase())) {
+          display = "none";
+        }
+
+        // Set the CSS display property accordingly to either hide (none) or
+        // show (table-row) the row.
+        let el = document.getElementById(`post-${post.id}`);
+        el.style.display = display;
+      }
     }
 
     window.addEventListener("load", async function() {
@@ -90,7 +109,7 @@
   <h1>Blog Admin</h1>
   <div class="search-box">
     <label for="search">Search</label>
-    <input type="text" name="search" id="search" />
+    <input type="text" name="search" id="search" onkeyup="filterPosts(this.value)" value="" />
   </div>
   <div id="posts"></div>
 </body>
