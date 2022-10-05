@@ -51,7 +51,7 @@
 
       for (let post of store.posts) {
         output += `
-          <tr>
+          <tr id="post-${post.id}">
             <td>${post.id}</td>
             <td>${post.title}</td>
             <td>${post.slug}</td>
@@ -67,9 +67,16 @@
     }
 
     async function deletePost(id) {
-      await postClient.deletePost(id);
-      store.posts = await postClient.getAll();
-      renderPosts(store.posts);
+      // Remove the post from our store.
+      const index = store.posts.findIndex(post => post.id == id);
+      store.posts.splice(index, 1);
+
+      // Remove the post's row from the UI.
+      const el = document.getElementById(`post-${id}`);
+      el.remove();
+
+      // Delete the post on the server.
+      await postClient.delete(id);
     }
 
     window.addEventListener("load", async function() {
